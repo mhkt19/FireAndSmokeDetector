@@ -1,0 +1,17 @@
+{
+    "test_ratio": 0.2,
+    "sampling_ratio": 0.02,
+    "batch_size": 32,
+    "num_epochs": 15,
+    "learning_rate": 0.001,
+    "dataset_folder": "dataset",
+    "train_folder": "train",
+    "test_folder": "test",
+    "results_folder": "results",
+    "patience": 3,
+    "sampling_method": "random",
+    "max_similar_photos": 2,
+    "similarity_threshold": 0.8,
+    "random_seed": 42,
+	"num_runs": 2
+}
