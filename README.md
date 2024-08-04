@@ -10,7 +10,7 @@ Fire detection using computer vision has become an increasingly important area o
 - **Early Detection**: Computer vision systems can detect fires and smoke at their very onset, providing critical early warnings.
 - **Wide Area Monitoring**: Cameras can cover large areas, making it feasible to monitor expansive regions such as forests, industrial sites, and large buildings.
 - **Remote Monitoring**: Vision-based systems allow for remote monitoring and control, which is vital for inaccessible or hazardous locations.
-- **Integration with Existing Infrastructure**: Many places already have CCTV and other video surveillance systems in place, which can be leveraged for fire detection.
+- **Integration with Existing Infrastructure**: Many places already have video surveillance systems in place, which can be leveraged for fire detection.
 - **Reduction in False Alarms**: Advanced algorithms can differentiate between actual fires and other heat or smoke sources, reducing false alarms.
 
 ### Complementing Sensor-Based Systems
@@ -18,7 +18,6 @@ Fire detection using computer vision has become an increasingly important area o
 While sensor-based systems are effective, their combination with computer vision can significantly enhance overall fire detection capabilities:
 - **Hybrid Systems**: Integrating computer vision with traditional sensors can provide a more comprehensive fire detection system, utilizing the strengths of both methods.
 - **Verification**: Vision-based systems can verify alarms from traditional sensors, ensuring that emergency responses are accurate and timely.
-- **Research and Studies**: Research indicates the growing importance and effectiveness of computer vision in fire detection. Notable papers include "Video Fire Detection – A Review" and "Fire Detection using Image Processing: A Review," which highlight advancements and the critical role of computer vision in this domain.
 
 ## Project Overview
 
@@ -32,9 +31,9 @@ The dataset consists of images classified into four categories:
 3. Smoke
 4. Neither Fire nor Smoke
 
-Due to resource limitations, only a subset of the dataset is used for training and testing. Specifically, a `sampling_ratio` of the whole dataset is used, as specified in the `config.json` file.
+Due to resource limitations, only a subset of the dataset is used for training and testing. Specifically, a `sampling_ratio = 2%` of the whole dataset is used, as specified in the `config.json` file.
 
-### Configuration
+<!--### Configuration
 
 The configuration settings for the project are stored in a `config.json` file. Key parameters include:
 
@@ -60,7 +59,7 @@ The configuration settings for the project are stored in a `config.json` file. K
     "use_dropout": true,  // Whether to use dropout
     "use_scheduler": false  // Whether to use a learning rate scheduler
 }
-```
+```-->
 
 ### Code Structure
 
@@ -127,6 +126,4 @@ This project demonstrates the potential of computer vision in enhancing fire and
 
 ### References
 
-1. "Video Fire Detection – A Review"
-2. "Fire Detection using Image Processing: A Review"
-3. "[Smoke and Fire Detection Dataset](https://www.scidb.cn/en/detail?dataSetId=ce9c9400b44148e1b0a749f5c3eb0bda)"
+1. "[Smoke and Fire Detection Dataset](https://www.scidb.cn/en/detail?dataSetId=ce9c9400b44148e1b0a749f5c3eb0bda)"
