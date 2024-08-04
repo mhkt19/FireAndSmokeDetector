@@ -27,11 +27,44 @@ This project implements a deep learning-based approach to detect fire and smoke 
 
 The dataset consists of images classified into four categories:
 1. Both Fire and Smoke
+
+![bothFireAndSmoke_CV020133](https://github.com/user-attachments/assets/21458afb-70d4-42ce-a3d2-2d8073893b5f)
+![bothFireAndSmoke_CV004740](https://github.com/user-attachments/assets/b56114e9-dfa8-4a42-a117-c5fc8852e976)
+![bothFireAndSmoke_CV003497](https://github.com/user-attachments/assets/cd9c0ca3-7c51-4ed3-b093-429f2780570d)
+
+   
 2. Fire
+
+![fire_CV002931](https://github.com/user-attachments/assets/6dd8e8d6-4cbc-4608-9150-fb4692c33e47)
+![fire_CV000272](https://github.com/user-attachments/assets/3bbdb51e-c84b-42d7-aeb2-8d7f5eb8eb45)
+![fire_CV006737](https://github.com/user-attachments/assets/d44d28c5-4b5a-470f-a8c1-349cf63b75aa)
+   
 3. Smoke
+
+![smoke_CV001440](https://github.com/user-attachments/assets/13a6ba38-2122-4c42-8385-5d25dbfc552a)
+![smoke_CV000739](https://github.com/user-attachments/assets/24884cc2-a45e-4497-91a2-bbf6ba3231a5)
+![smoke_CV000723](https://github.com/user-attachments/assets/b7e5eb14-faf9-4786-8c8d-ae061b0a2997)
+
 4. Neither Fire nor Smoke
 
+![neitherFireNorSmoke_CV001375](https://github.com/user-attachments/assets/99775395-ae2d-4f37-a0cb-67f4a3a3e0ea)
+![neitherFireNorSmoke_CV000749](https://github.com/user-attachments/assets/54a11885-02e7-41c8-9ff2-1d35de6cde17)
+![neitherFireNorSmoke_CV000067](https://github.com/user-attachments/assets/98f11a06-c6cb-46ba-910a-10a6000c6934)
+
+
 Due to resource limitations, only a subset of the dataset is used for training and testing. Specifically, a `sampling_ratio = 2%` of the whole dataset is used, as specified in the `config.json` file.
+
+Both Fire and smoke
+
+
+
+Fire:
+
+
+Smoke:
+
+Neither Fire nor Smoke
+
 
 <!--### Configuration
 
