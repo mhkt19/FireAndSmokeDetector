@@ -37,7 +37,9 @@ The dataset consists of images classified into four categories:
 
 ![fire_CV002931](https://github.com/user-attachments/assets/6dd8e8d6-4cbc-4608-9150-fb4692c33e47)
 ![fire_CV000272](https://github.com/user-attachments/assets/3bbdb51e-c84b-42d7-aeb2-8d7f5eb8eb45)
-![fire_CV006737](https://github.com/user-attachments/assets/d44d28c5-4b5a-470f-a8c1-349cf63b75aa)
+![fire_CV007057](https://github.com/user-attachments/assets/28d9d2c4-dbed-449b-b2ac-a44dbba40fa0)
+
+
    
 3. Smoke
 
