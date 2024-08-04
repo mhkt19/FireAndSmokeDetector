@@ -13,5 +13,9 @@
     "max_similar_photos": 2,
     "similarity_threshold": 0.8,
     "random_seed": 42,
-	"num_runs": 2
+    "num_runs": 1,
+    "data_augmentation": true, 
+    "model_choice": "resnet18",  
+    "use_dropout": false,  
+    "use_scheduler": true 
 }

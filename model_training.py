@@ -17,17 +17,84 @@ import seaborn as sns
 from PIL import Image
 import copy
 
-# Define the model
-class ResNet18Classifier(nn.Module):
+# Global configuration variables
+config = {}
+
+# Configuration variables with default values
+batch_size = 32  # Number of samples per gradient update
+learning_rate = 0.001  # Learning rate for the optimizer
+train_folder = 'train'  # Folder containing training data
+test_folder = 'test'  # Folder containing testing data
+results_folder = 'results'  # Folder to save results
+num_epochs = 15  # Number of epochs for training
+patience = 3  # Patience for early stopping
+num_runs = 10  # Number of runs for training and evaluation
+random_seed = 42  # Seed for random number generators for reproducibility
+data_augmentation = False  # Whether to use data augmentation
+model_choice = 'resnet18'  # Model choice: 'resnet18', 'resnet50', 'vgg16'
+use_dropout = False  # Whether to use dropout in the model
+use_scheduler = False  # Whether to use a learning rate scheduler
+
+def read_config():
+    global config, batch_size, learning_rate, train_folder, test_folder, results_folder, num_epochs, patience, num_runs, random_seed, data_augmentation, model_choice, use_dropout, use_scheduler
+    with open('config.json', 'r') as f:
+        config = json.load(f)
+
+    # Reading and setting configuration variables from the config file
+    batch_size = config.get('batch_size', 32)  # Example: 64
+    learning_rate = config.get('learning_rate', 0.001)  # Example: 0.0005
+    train_folder = config.get('train_folder', 'train')  # Example: 'data/train'
+    test_folder = config.get('test_folder', 'test')  # Example: 'data/test'
+    results_folder = config.get('results_folder', 'results')  # Example: 'output/results'
+    num_epochs = config.get('num_epochs', 15)  # Example: 20
+    patience = config.get('patience', 3)  # Example: 5
+    num_runs = config.get('num_runs', 10)  # Example: 5
+    random_seed = config.get('random_seed', 42)  # Example: 12345
+    data_augmentation = config.get('data_augmentation', False)  # Example: True
+    model_choice = config.get('model_choice', 'resnet18').lower()  # Example: 'resnet50'
+    use_dropout = config.get('use_dropout', False)  # Example: True
+    use_scheduler = config.get('use_scheduler', False)  # Example: True
+
+def get_transform():
+    if data_augmentation:
+        transform = transforms.Compose([
+            transforms.Resize((224, 224)),
+            transforms.RandomHorizontalFlip(),
+            transforms.RandomRotation(10),
+            transforms.ColorJitter(brightness=0.2, contrast=0.2, saturation=0.2, hue=0.2),
+            transforms.ToTensor(),
+        ])
+    else:
+        transform = transforms.Compose([
+            transforms.Resize((224, 224)),
+            transforms.ToTensor(),
+        ])
+    return transform
+
+class CustomModel(nn.Module):
     def __init__(self, num_classes):
-        super(ResNet18Classifier, self).__init__()
-        self.model = models.resnet18(weights='IMAGENET1K_V1')
-        self.model.fc = nn.Linear(self.model.fc.in_features, num_classes)
+        super(CustomModel, self).__init__()
+        if model_choice == 'resnet50':
+            self.model = models.resnet50(weights='IMAGENET1K_V1')
+        elif model_choice == 'vgg16':
+            self.model = models.vgg16(weights='IMAGENET1K_V1')
+            self.model.classifier[6] = nn.Linear(self.model.classifier[6].in_features, num_classes)
+        else:  # Default to resnet18
+            self.model = models.resnet18(weights='IMAGENET1K_V1')
+        
+        if model_choice in ['resnet50', 'resnet18']:
+            if use_dropout:
+                self.model.fc = nn.Sequential(
+                    nn.Dropout(0.5),
+                    nn.Linear(self.model.fc.in_features, num_classes)
+                )
+            else:
+                self.model.fc = nn.Linear(self.model.fc.in_features, num_classes)
     
     def forward(self, x):
         return self.model(x)
 
-def train_and_evaluate(model, criterion, optimizer, scheduler, dataloaders, config):
+def train_and_evaluate(model, criterion, optimizer, scheduler, dataloaders):
     print("Starting training and evaluation...")
     device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
     model = model.to(device)
@@ -35,8 +102,6 @@ def train_and_evaluate(model, criterion, optimizer, scheduler, dataloaders, conf
     best_model_wts = copy.deepcopy(model.state_dict())
     best_acc = 0.0
     patience_counter = 0
-    num_epochs = config.get('num_epochs', 15)
-    patience = config.get('patience', 3)
 
     start_time = time.time()
 
@@ -109,7 +174,7 @@ def train_and_evaluate(model, criterion, optimizer, scheduler, dataloaders, conf
                     'recall': round(recall * 100, 2)
                 }
 
-        scheduler.step(epoch_loss)
+        scheduler.step()
         print()
 
         if patience_counter >= patience:
@@ -225,20 +290,10 @@ def test_model(model, dataloader, results_folder, dataset, run_index, phase):
     return accuracy, cm, precision, recall, binary_accuracy, binary_cm, binary_precision, binary_recall
 
 def main():
-    # Load configuration
-    with open('config.json', 'r') as f:
-        config = json.load(f)
-
-    # Extract configuration variables
-    batch_size = config.get('batch_size', 32)
-    learning_rate = config.get('learning_rate', 0.001)
-    train_folder = config.get('train_folder', 'train')
-    test_folder = config.get('test_folder', 'test')
-    results_folder = config.get('results_folder', 'results')
-    num_runs = config.get('num_runs', 10)
+    global config
+    read_config()
 
     # Set random seed for reproducibility
-    random_seed = config.get('random_seed', 42)
     random.seed(random_seed)
     np.random.seed(random_seed)
     torch.manual_seed(random_seed)
@@ -246,10 +301,7 @@ def main():
         torch.cuda.manual_seed_all(random_seed)
 
     # Define transformations
-    transform = transforms.Compose([
-        transforms.Resize((224, 224)),
-        transforms.ToTensor(),
-    ])
+    transform = get_transform()
 
     # Load datasets
     print("Loading datasets...")
@@ -297,15 +349,19 @@ def main():
     for run_index in range(num_runs):
         print(f"Run {run_index + 1}/{num_runs}")
         # Define the model
-        model = ResNet18Classifier(num_classes=len(train_dataset.classes))
+        model = CustomModel(num_classes=len(train_dataset.classes))
         criterion = nn.CrossEntropyLoss()
         optimizer = optim.Adam(model.parameters(), lr=learning_rate)
-        scheduler = optim.lr_scheduler.ReduceLROnPlateau(optimizer, 'min', patience=2)
+        
+        if use_scheduler:
+            scheduler = optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=10, eta_min=0)
+        else:
+            scheduler = optim.lr_scheduler.ReduceLROnPlateau(optimizer, 'min', patience=2)
 
         tracemalloc.start()
 
         # Train and evaluate the model
-        trained_model, duration, train_metrics, test_metrics = train_and_evaluate(model, criterion, optimizer, scheduler, dataloaders, config)
+        trained_model, duration, train_metrics, test_metrics = train_and_evaluate(model, criterion, optimizer, scheduler, dataloaders)
 
         current, peak = tracemalloc.get_traced_memory()
         tracemalloc.stop()
