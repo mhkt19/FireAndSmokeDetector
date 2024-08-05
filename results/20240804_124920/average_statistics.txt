@@ -1,0 +1,37 @@
+Train Metrics:
+Average Accuracy: 96.31%
+Average Precision: 96.32%
+Average Recall: 96.31%
+Average Duration: 3429.90 seconds
+Average Max Memory Usage: 0.73 MB
+Average Confusion Matrix:
+[[299.20 13.90 2.30 6.60]
+ [8.70 181.10 9.90 0.30]
+ [0.90 1.90 622.10 1.10]
+ [2.90 0.40 7.20 363.50]]
+
+Average Binary Accuracy: 98.47%
+Average Binary Precision: 98.53%
+Average Binary Recall: 98.47%
+Average Binary Confusion Matrix:
+[[622.10 3.90]
+ [19.40 876.60]]
+
+Test Metrics:
+Average Accuracy: 87.08%
+Average Precision: 87.11%
+Average Recall: 87.08%
+Average Duration: 3429.90 seconds
+Average Max Memory Usage: 0.73 MB
+Average Confusion Matrix:
+[[61.10 8.40 3.60 7.90]
+ [6.00 37.50 6.60 0.90]
+ [2.10 3.60 147.90 3.40]
+ [1.70 0.20 5.10 87.00]]
+
+Average Binary Accuracy: 93.63%
+Average Binary Precision: 93.79%
+Average Binary Recall: 93.63%
+Average Binary Confusion Matrix:
+[[147.90 9.10]
+ [15.30 210.70]]

@@ -207,6 +207,7 @@ def test_model(model, dataloader, results_folder, dataset, run_index, phase):
     all_preds = []
     all_probs = []
     misclassified_images = []
+    original_images = dataset.imgs
     
     with torch.no_grad():
         for inputs, labels in dataloader:
@@ -223,7 +224,7 @@ def test_model(model, dataloader, results_folder, dataset, run_index, phase):
             
             for i in range(len(labels)):
                 if labels[i] != predicted[i]:
-                    misclassified_images.append((inputs[i], labels[i], predicted[i]))
+                    misclassified_images.append((original_images[i][0], labels[i], predicted[i]))
     
     accuracy = round(100 * correct / total, 2)
     print(f'{phase} Accuracy: {accuracy}%')
@@ -250,8 +251,8 @@ def test_model(model, dataloader, results_folder, dataset, run_index, phase):
     
     misclassified_folder = os.path.join(phase_folder, 'misclassified')
     os.makedirs(misclassified_folder, exist_ok=True)
-    for idx, (img_tensor, true_label, pred_label) in enumerate(misclassified_images):
-        img = transforms.ToPILImage()(img_tensor.cpu())
+    for idx, (img_path, true_label, pred_label) in enumerate(misclassified_images):
+        img = Image.open(img_path)
         img.save(os.path.join(misclassified_folder, f'{idx}_true_{dataset.classes[true_label]}_pred_{dataset.classes[pred_label]}.png'))
     
     # Map to binary classes
@@ -367,6 +368,16 @@ def main():
         tracemalloc.stop()
 
         memory_usage = peak / (1024 * 1024)  # Convert to MB
+
+        # Save the model
+        run_folder = os.path.join(series_results_folder, f'run_{run_index + 1}')
+        os.makedirs(run_folder, exist_ok=True)
+        model_path = os.path.join(run_folder, 'model.pth')
+        torch.save(model.state_dict(), model_path)
+
+        # Save the optimizer state (optional)
+        optimizer_path = os.path.join(run_folder, 'optimizer.pth')
+        torch.save(optimizer.state_dict(), optimizer_path)
 
         # Test the model and save results for training phase
         train_phase_results = test_model(trained_model, dataloaders['train'], series_results_folder, train_dataset, run_index, 'train')

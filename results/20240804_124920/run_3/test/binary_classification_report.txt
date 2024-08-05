@@ -1,0 +1,8 @@
+                     precision    recall  f1-score   support
+
+neitherFireNorSmoke       0.93      0.96      0.94       157
+     fire_and_smoke       0.97      0.95      0.96       226
+
+           accuracy                           0.95       383
+          macro avg       0.95      0.95      0.95       383
+       weighted avg       0.95      0.95      0.95       383
