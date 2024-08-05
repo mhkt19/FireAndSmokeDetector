@@ -71,16 +71,6 @@ The dataset consists of images classified into four categories:
 
 Due to resource limitations, only a subset of the dataset is used for training and testing. Specifically, a `sampling_ratio = 2%` of the whole dataset is used, as specified in the `config.json` file.
 
-Both Fire and smoke
-
-
-
-Fire:
-
-
-Smoke:
-
-Neither Fire nor Smoke
 
 
 <!--### Configuration
@@ -148,7 +138,7 @@ In this setup, the images are classified into two groups: one group consists of 
 - **Average Binary Accuracy**: 93.63%
 - **Average Binary Precision**: 93.79%
 - **Average Binary Recall**: 93.63%
-- **Average Binary Confusion Matrix**:
+  
 
 ![average_test_binary_confusion_matrix](https://github.com/user-attachments/assets/be0a8887-6860-454d-afaf-1a5f7bfce897)
 
@@ -159,8 +149,8 @@ In this setup, the images are classified into four distinct categories: both fir
 - **Average Test Accuracy**: 87.08%
 - **Average Test Precision**: 87.11%
 - **Average Test Recall**: 87.08%
-- **Average Test Confusion Matrix**:
 
+  
 
 ![average_test_confusion_matrix](https://github.com/user-attachments/assets/a9464de0-dddb-4cdb-861f-eeb7cee8f927)
 
