@@ -134,7 +134,8 @@ In this setup, the images are classified into two groups: one group consists of 
 - **Average Binary Precision**: 93.79%
 - **Average Binary Recall**: 93.63%
 - **Average Binary Confusion Matrix**:
-<img src="https://github.com/user-attachments/assets/36e2d1e9-5469-4a79-bbd5-56addb086e87" alt="binaryClassification_confusion_matrix" width="600"/>
+
+![average_test_binary_confusion_matrix](https://github.com/user-attachments/assets/be0a8887-6860-454d-afaf-1a5f7bfce897)
 
 
 #### Detailed Classification
@@ -145,7 +146,8 @@ In this setup, the images are classified into four distinct categories: both fir
 - **Average Test Recall**: 87.08%
 - **Average Test Confusion Matrix**:
 
-<img src="https://github.com/user-attachments/assets/a1510e05-283f-424b-a5f6-6a1599401391" alt="Classification_confusion_matrix" width="600"/>
+
+![average_test_confusion_matrix](https://github.com/user-attachments/assets/a9464de0-dddb-4cdb-861f-eeb7cee8f927)
 
 
 The binary classification approach yields a higher accuracy because it simplifies the problem by combining the fire, smoke, and fire & smoke categories into a single class. However, the detailed classification provides more granular information, which can be beneficial for specific applications despite the lower accuracy.
