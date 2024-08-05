@@ -10,7 +10,7 @@ Fire detection using computer vision has become an increasingly important area o
 - **Early Detection**: Computer vision systems can detect fires and smoke at their very onset, providing critical early warnings.
 - **Wide Area Monitoring**: Cameras can cover large areas, making it feasible to monitor expansive regions such as forests, industrial sites, and large buildings.
 - **Remote Monitoring**: Vision-based systems allow for remote monitoring and control, which is vital for inaccessible or hazardous locations.
-- **Integration with Existing Infrastructure**: Many places already have CCTV and other video surveillance systems in place, which can be leveraged for fire detection.
+- **Integration with Existing Infrastructure**: Many places already have video surveillance systems in place, which can be leveraged for fire detection.
 - **Reduction in False Alarms**: Advanced algorithms can differentiate between actual fires and other heat or smoke sources, reducing false alarms.
 
 ### Complementing Sensor-Based Systems
@@ -18,7 +18,6 @@ Fire detection using computer vision has become an increasingly important area o
 While sensor-based systems are effective, their combination with computer vision can significantly enhance overall fire detection capabilities:
 - **Hybrid Systems**: Integrating computer vision with traditional sensors can provide a more comprehensive fire detection system, utilizing the strengths of both methods.
 - **Verification**: Vision-based systems can verify alarms from traditional sensors, ensuring that emergency responses are accurate and timely.
-- **Research and Studies**: Research indicates the growing importance and effectiveness of computer vision in fire detection. Notable papers include "Video Fire Detection – A Review" and "Fire Detection using Image Processing: A Review," which highlight advancements and the critical role of computer vision in this domain.
 
 ## Project Overview
 
@@ -28,13 +27,48 @@ This project implements a deep learning-based approach to detect fire and smoke 
 
 The dataset consists of images classified into four categories:
 1. Both Fire and Smoke
+
+![bothFireAndSmoke_CV020133](https://github.com/user-attachments/assets/21458afb-70d4-42ce-a3d2-2d8073893b5f)
+![bothFireAndSmoke_CV004740](https://github.com/user-attachments/assets/b56114e9-dfa8-4a42-a117-c5fc8852e976)
+![bothFireAndSmoke_CV003497](https://github.com/user-attachments/assets/cd9c0ca3-7c51-4ed3-b093-429f2780570d)
+
+   
 2. Fire
+
+![fire_CV002931](https://github.com/user-attachments/assets/6dd8e8d6-4cbc-4608-9150-fb4692c33e47)
+![fire_CV000272](https://github.com/user-attachments/assets/3bbdb51e-c84b-42d7-aeb2-8d7f5eb8eb45)
+![fire_CV007057](https://github.com/user-attachments/assets/28d9d2c4-dbed-449b-b2ac-a44dbba40fa0)
+
+
+   
 3. Smoke
+
+![smoke_CV001440](https://github.com/user-attachments/assets/13a6ba38-2122-4c42-8385-5d25dbfc552a)
+![smoke_CV000739](https://github.com/user-attachments/assets/24884cc2-a45e-4497-91a2-bbf6ba3231a5)
+![smoke_CV000723](https://github.com/user-attachments/assets/b7e5eb14-faf9-4786-8c8d-ae061b0a2997)
+
 4. Neither Fire nor Smoke
 
-Due to resource limitations, only a subset of the dataset is used for training and testing. Specifically, a `sampling_ratio` of the whole dataset is used, as specified in the `config.json` file.
+![neitherFireNorSmoke_CV001375](https://github.com/user-attachments/assets/99775395-ae2d-4f37-a0cb-67f4a3a3e0ea)
+![neitherFireNorSmoke_CV000749](https://github.com/user-attachments/assets/54a11885-02e7-41c8-9ff2-1d35de6cde17)
+![neitherFireNorSmoke_CV000067](https://github.com/user-attachments/assets/98f11a06-c6cb-46ba-910a-10a6000c6934)
 
-### Configuration
+
+Due to resource limitations, only a subset of the dataset is used for training and testing. Specifically, a `sampling_ratio = 2%` of the whole dataset is used, as specified in the `config.json` file.
+
+Both Fire and smoke
+
+
+
+Fire:
+
+
+Smoke:
+
+Neither Fire nor Smoke
+
+
+<!--### Configuration
 
 The configuration settings for the project are stored in a `config.json` file. Key parameters include:
 
@@ -60,7 +94,7 @@ The configuration settings for the project are stored in a `config.json` file. K
     "use_dropout": true,  // Whether to use dropout
     "use_scheduler": false  // Whether to use a learning rate scheduler
 }
-```
+```-->
 
 ### Code Structure
 
@@ -96,28 +130,25 @@ The model was trained and evaluated over 10 runs. Below are the average results 
 #### Binary Classification
 In this setup, the images are classified into two groups: one group consists of images containing fire, smoke, or both; the other group consists of images with neither fire nor smoke.
 
-- **Average Binary Accuracy**: 91.78%
-- **Average Binary Precision**: 91.84%
-- **Average Binary Recall**: 91.78%
+- **Average Binary Accuracy**: 93.63%
+- **Average Binary Precision**: 93.79%
+- **Average Binary Recall**: 93.63%
 - **Average Binary Confusion Matrix**:
-  ```
-  [[142.60 14.40]
-   [17.10 208.90]]
-  ```
+
+![average_test_binary_confusion_matrix](https://github.com/user-attachments/assets/be0a8887-6860-454d-afaf-1a5f7bfce897)
+
 
 #### Detailed Classification
 In this setup, the images are classified into four distinct categories: both fire and smoke, fire, smoke, and neither fire nor smoke.
 
-- **Average Test Accuracy**: 84.10%
-- **Average Test Precision**: 84.35%
-- **Average Test Recall**: 84.10%
+- **Average Test Accuracy**: 87.08%
+- **Average Test Precision**: 87.11%
+- **Average Test Recall**: 87.08%
 - **Average Test Confusion Matrix**:
-  ```
-  [[63.40  7.20  4.20  6.20]
-   [11.80 31.80  6.80  0.60]
-   [ 3.70  5.10 142.60  5.60]
-   [ 3.40  0.20  6.10 84.30]]
-  ```
+
+
+![average_test_confusion_matrix](https://github.com/user-attachments/assets/a9464de0-dddb-4cdb-861f-eeb7cee8f927)
+
 
 The binary classification approach yields a higher accuracy because it simplifies the problem by combining the fire, smoke, and fire & smoke categories into a single class. However, the detailed classification provides more granular information, which can be beneficial for specific applications despite the lower accuracy.
 
@@ -127,6 +158,4 @@ This project demonstrates the potential of computer vision in enhancing fire and
 
 ### References
 
-1. "Video Fire Detection – A Review"
-2. "Fire Detection using Image Processing: A Review"
-3. "[Smoke and Fire Detection Dataset](https://www.scidb.cn/en/detail?dataSetId=ce9c9400b44148e1b0a749f5c3eb0bda)"
+1. "[Smoke and Fire Detection Dataset](https://www.scidb.cn/en/detail?dataSetId=ce9c9400b44148e1b0a749f5c3eb0bda)"
