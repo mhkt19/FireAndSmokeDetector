@@ -42,31 +42,34 @@ This project implements a deep learning-based approach to detect fire and smoke 
 
 The dataset consists of images classified into four categories:
 1. Both Fire and Smoke
-
-![bothFireAndSmoke_CV020133](https://github.com/user-attachments/assets/21458afb-70d4-42ce-a3d2-2d8073893b5f)
-![bothFireAndSmoke_CV004740](https://github.com/user-attachments/assets/b56114e9-dfa8-4a42-a117-c5fc8852e976)
-![bothFireAndSmoke_CV003497](https://github.com/user-attachments/assets/cd9c0ca3-7c51-4ed3-b093-429f2780570d)
-
    
-2. Fire
+![bothFireAndSmoke_CV019477](https://github.com/user-attachments/assets/d5fbab52-c862-4fa2-acbd-e7fac5c23148)
+![bothFireAndSmoke_CV013509](https://github.com/user-attachments/assets/8abab65f-ca2f-42b3-9eeb-0fa398bd7b35)
 
-![fire_CV002931](https://github.com/user-attachments/assets/6dd8e8d6-4cbc-4608-9150-fb4692c33e47)
-![fire_CV000272](https://github.com/user-attachments/assets/3bbdb51e-c84b-42d7-aeb2-8d7f5eb8eb45)
-![fire_CV007057](https://github.com/user-attachments/assets/28d9d2c4-dbed-449b-b2ac-a44dbba40fa0)
+
+3. Fire
+
+![fire_CV007057](https://github.com/user-attachments/assets/e1589df7-0085-4d3c-865e-3105e04bb4a2)
+![fire_CV011611](https://github.com/user-attachments/assets/d6fc59d3-3c5d-465f-b5e8-4b58232639a4)
+
 
 
    
 3. Smoke
+   
+![smoke_CV008499](https://github.com/user-attachments/assets/86048339-63a8-4e12-9b75-83cc54fd0111)
+![smoke_CV001310](https://github.com/user-attachments/assets/0e503073-305a-496c-8657-bbc044696be1)
 
-![smoke_CV001440](https://github.com/user-attachments/assets/13a6ba38-2122-4c42-8385-5d25dbfc552a)
-![smoke_CV000739](https://github.com/user-attachments/assets/24884cc2-a45e-4497-91a2-bbf6ba3231a5)
-![smoke_CV000723](https://github.com/user-attachments/assets/b7e5eb14-faf9-4786-8c8d-ae061b0a2997)
 
-4. Neither Fire nor Smoke
 
-![neitherFireNorSmoke_CV001375](https://github.com/user-attachments/assets/99775395-ae2d-4f37-a0cb-67f4a3a3e0ea)
-![neitherFireNorSmoke_CV000749](https://github.com/user-attachments/assets/54a11885-02e7-41c8-9ff2-1d35de6cde17)
-![neitherFireNorSmoke_CV000067](https://github.com/user-attachments/assets/98f11a06-c6cb-46ba-910a-10a6000c6934)
+
+
+
+5. Neither Fire nor Smoke
+
+![neitherFireNorSmoke_CV000893](https://github.com/user-attachments/assets/6fe55801-6b2d-4b6c-ba44-c46745f40ad6)
+![neitherFireNorSmoke_CV024001](https://github.com/user-attachments/assets/5709dd08-b9f0-45a8-b009-4486557701fe)
+
 
 
 Due to resource limitations, only a subset of the dataset is used for training and testing. Specifically, a `sampling_ratio = 2%` of the whole dataset is used, as specified in the `config.json` file.
