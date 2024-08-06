@@ -1,7 +1,8 @@
 
 # Fire and Smoke Detection
 
-![b285d2c0-6272-4cb0-bbb6-fa02b0441b33 (1)](https://github.com/user-attachments/assets/8f1ad78d-0457-46eb-9661-1b428065e2b6)
+
+![3](https://github.com/user-attachments/assets/1c40d2cd-e7cf-4ae5-9f85-b57759bcc306)
 
 
 ## Introduction
