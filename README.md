@@ -40,36 +40,41 @@ While sensor-based systems are effective, their combination with computer vision
 This project implements a deep learning-based approach to detect fire and smoke in images. The dataset used for training and testing is sourced from the paper titled "[Smoke and Fire Detection Dataset](https://www.scidb.cn/en/detail?dataSetId=ce9c9400b44148e1b0a749f5c3eb0bda)."
 
 ### Dataset
-
 The dataset consists of images classified into four categories:
-1. Both Fire and Smoke
-   
-![bothFireAndSmoke_CV019477](https://github.com/user-attachments/assets/d5fbab52-c862-4fa2-acbd-e7fac5c23148)
-![bothFireAndSmoke_CV013509](https://github.com/user-attachments/assets/8abab65f-ca2f-42b3-9eeb-0fa398bd7b35)
 
+### Both Fire and Smoke
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/d5fbab52-c862-4fa2-acbd-e7fac5c23148" alt="bothFireAndSmoke_CV019477" width="400"/>
+  <img src="https://github.com/user-attachments/assets/8abab65f-ca2f-42b3-9eeb-0fa398bd7b35" alt="bothFireAndSmoke_CV013509" width="400"/>
+</p>
 
-3. Fire
-
-![fire_CV007057](https://github.com/user-attachments/assets/e1589df7-0085-4d3c-865e-3105e04bb4a2)
-![fire_CV011611](https://github.com/user-attachments/assets/d6fc59d3-3c5d-465f-b5e8-4b58232639a4)
-
-
-
-   
-3. Smoke
-   
-![smoke_CV008499](https://github.com/user-attachments/assets/86048339-63a8-4e12-9b75-83cc54fd0111)
-![smoke_CV001310](https://github.com/user-attachments/assets/0e503073-305a-496c-8657-bbc044696be1)
+### Fire
 
 
 
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/e1589df7-0085-4d3c-865e-3105e04bb4a2" alt="fire_CV007057" width="400"/>
+  <img src="https://github.com/user-attachments/assets/1a358272-c87a-42ce-a8eb-2a0fabaa0095" alt="fire_CV011611" width="400"/>
+</p>
+
+### Smoke
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/ccc14ccd-be5f-46d8-b3b7-8d95056528f4" alt="smoke_CV008499" width="400"/>
+  <img src="https://github.com/user-attachments/assets/41155d54-97ac-499c-a83a-f8b710cff413" alt="smoke_CV001310" width="400"/>
+</p>
 
 
 
-5. Neither Fire nor Smoke
+### Neither Fire nor Smoke
 
-![neitherFireNorSmoke_CV000893](https://github.com/user-attachments/assets/6fe55801-6b2d-4b6c-ba44-c46745f40ad6)
-![neitherFireNorSmoke_CV024001](https://github.com/user-attachments/assets/5709dd08-b9f0-45a8-b009-4486557701fe)
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/2b2af6c5-a85d-4151-b4be-9f2d14ba6f94" alt="neitherFireNorSmoke_CV000893" width="400"/>
+  <img src="https://github.com/user-attachments/assets/eaa4cb3b-258b-4aae-9f84-fa8d21039762" alt="neitherFireNorSmoke_CV024001" width="400"/>
+</p>
+
+
 
 
 
